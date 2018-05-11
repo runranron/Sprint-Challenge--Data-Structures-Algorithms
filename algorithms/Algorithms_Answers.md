@@ -1,11 +1,11 @@
 Add your answers to the Algorithms exercises here.
 
 I.
-    a. O(1)
+    a. O(n)
     b. O(logn)
-    c. O(logn)
+    c. O(sqrt(n))
     d. O(nlogn)
-    e. O(n^2)
+    e. O(n^3)
     f. O(n)
     g. O(n)
 
@@ -20,22 +20,36 @@ II.
         }
     
     b. 
-        let prev = 0;
-        let prevBroken = null;
+        let highestGood = 0;
+        let egg = {};
+
         function breakSomeEggsAndGetF(n) {
-            let floor = n-1;
-            while (floor > prev) {
-                const egg = new Egg;
-                prevFloor = floor;
-                egg.dropFromFloor(n);
-                if (egg.isBroken === true && prevBroken !== false) {
-                    floor = floor/2;
-                    prevBroken = true;
+            let floor = n;
+            while (floor !== highestGood) {
+                egg = new Egg;
+                egg.dropFromFloor(floor);
+                if (egg.isBroken) {
+                    floor = highestGood + Math.floor(Math.abs(floor - highestGood)/2);
                 } else {
-                    floor = Math.abs(prevFloor-floor)/2;
+                    highestGood = floor;
+                    floor = floor + (Math.floor(Math.abs(n - highestGood)/2));
                 }
             }
         }
+
+        class Egg {
+            constructor() {
+                this.maxFloor = 10;
+                this.isBroken = false;
+            }
+            dropFromFloor(n) {
+                if (n > this.maxFloor) {
+                this.isBroken = true;
+                }
+            }
+        }
+
+        breakSomeEggsAndGetF(20)
 
 III. 
     a. 
