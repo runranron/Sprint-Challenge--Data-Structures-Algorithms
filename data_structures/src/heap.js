@@ -1,6 +1,11 @@
 const heapsort = (arr) => {
   /* Your code here */
-  
+  const heap = new Heap;
+  heap.storage = [];
+  arr.forEach(element => {
+    heap.insert(element);
+  });
+  return heap.storage;
 };
 
 class Heap {

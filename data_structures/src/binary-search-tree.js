@@ -1,6 +1,7 @@
 const checkBalanced = (rootNode) => {
   /* Your code here */
-
+  check = (node) => {
+  }
 };
 
 class BinarySearchTree {
