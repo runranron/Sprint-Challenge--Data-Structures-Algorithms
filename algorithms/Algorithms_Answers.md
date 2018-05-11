@@ -23,15 +23,16 @@ II.
         let prev = 0;
         let prevBroken = null;
         function breakSomeEggsAndGetF(n) {
-            while (n > prev) {
+            let floor = n-1;
+            while (floor > prev) {
                 const egg = new Egg;
-                prev = n;
+                prevFloor = floor;
                 egg.dropFromFloor(n);
                 if (egg.isBroken === true && prevBroken !== false) {
-                    n = n/2;
+                    floor = floor/2;
                     prevBroken = true;
                 } else {
-                    n = Math.abs(prev-n);
+                    floor = Math.abs(prevFloor-floor)/2;
                 }
             }
         }
